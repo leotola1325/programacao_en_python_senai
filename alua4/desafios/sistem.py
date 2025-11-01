@@ -1,59 +1,47 @@
-print('=================   BEM-VINDO AO HOTEL   ===================')
 
+quartos = ['','simples','duplo','luxo']
+valores = [0,100,150,250]
+
+pessoas = int(input('Quantas pessoas vão se hospedar (máx 3): '))
+
+
+if pessoas > 3:
+    pessoas = 3
+    print("Só é permitido até 3 hóspedes. Considerando 3 pessoas.")
 
 nomes = []
 idades = []
-tipos_quarto = []
-dias_clientes = []
-totais = []
 
-suites = {
-    1: 100,   # Simples
-    2: 150,   # Duplo
-    3: 250    # Luxo
-}
-
-
-print('Cadastro de até 3 clientes:')
-
-
-
-for i in range(3):
-    print(f'Cliente {i+1}:')
-    
-    nome = input('Digite o nome: ')
-    idade = int(input('Digite a idade: '))
-    
+for i in range(pessoas):
+    nome = input(f'Nome da pessoa {i+1}: ')
+    idade = int(input('Idade: '))
     nomes.append(nome)
     idades.append(idade)
 
 
+for i in range(pessoas):
+    print('Olá', nomes[i])
 
-print('''
-Escolha o tipo de quarto:
-1 - Simples = R$100/dia
-2 - Duplo   = R$150/dia
-3 - Luxo    = R$250/dia
-''')
+    escolha = int(input(f'''
+escolha p seu quarto
+1 - {quartos[1]} R$ {valores[1]}
+2 - {quartos[2]} R$ {valores[2]}
+3 - {quartos[3]} R$ {valores[3]}
+'''))
 
+    quantidade = int(input('Dias: '))
+    calculo = valores[escolha] * quantidade
 
-for i in range(3):
-    print(f'Olá {nomes[i]}')
-    
-    tipo = int(input("Escolha o tipo de quarto (1, 2 ou 3): "))
-    dias = int(input("Quantos dias ficará no hotel? "))
+    print('R$', calculo)
+    print('Dias', quantidade)
 
-
-    tipos_quarto.append(tipo)
-    dias_clientes.append(dias)
-
-
-    preco = suites[tipo]
-    total = preco * dias
-    totais.append(total)
-
-print(f'''
- {nomes[0]} seu total a pagar pela sua diaria de {dias_clientes[0]} é de  R${totais[0]}
- {nomes[1]} seu total a pagar pela sua diaria de {dias_clientes[1]} é de  R${totais[1]}
- {nomes[2]} seu total a pagar pela sua diaria de {dias_clientes[2]} é de  R${totais[2]}
-''')
+    formas_pag = ['', 'PIX','CC','CD']
+    print(f'''
+    1 - pix
+    2 - cc
+    3 - cd
+    ''')
+    pag = int(input('Forma de pagamento: '))
+    print('forma de pagamento - ', formas_pag[pag])
+    print('Obrigada volte sempre')
+    print('--------------------------------')
